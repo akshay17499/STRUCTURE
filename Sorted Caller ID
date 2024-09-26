@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include <string.h>
+typedef struct node
+{
+    char name[30];
+    char number[20];
+}contacts;
+
+int main()
+{
+    int num;
+    printf("number of contacts need to be entered : ");
+    scanf("%d",&num);
+    contacts arr[num];
+    for(int i=0;i<num;i++)
+    {
+        printf("enter name : ");
+        scanf("%s",arr[i].name);
+        printf("enter phone number : ");
+        scanf("%s",arr[i].number);
+        
+    }
+    // sort
+    for(int i=0;i<num-1;i++)
+    {
+        for(int j=i+1;j<num;j++)
+        {
+            if(strcmp(arr[i].name,arr[j].name)>0)
+            {
+               contacts temp = arr[i]; 
+                arr[i]=arr[j];
+                arr[j]=temp;
+            }
+        }
+    }
+    // display
+     for(int i=0;i<num;i++)
+    { 
+        printf("name-> %s  phone no-> %s\n",arr[i].name,arr[i].number);
+    }
+}
